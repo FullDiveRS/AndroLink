@@ -1,0 +1,30 @@
+AndroLink 0.2.1 - build notes
+=============================
+
+FIXES
+-----
+1. Buttons inside pages (Create device, Start, Stop, Delete, Install APK,
+   Download, Save settings, ...) were inert - only the left navigation rail
+   responded. Root cause: the UI framework's hit-test translated the pointer
+   by the child rect before the child's own bounds check, so every container
+   whose layout origin was not (0,0) - the whole page host at x=208 - rejected
+   clicks and they fell through to the root panel. Fixed in
+   src/AndroLink.UI/Core/Window.cs; regression tests in
+   src/AndroLink.Tests/HitTestProbeTests.cs (5 tests).
+
+2. Android images page: text/badge/button rows are now optically centered
+   (font baseline math redone - UiFonts.BaselineForCentered). Probes:
+   ImagesRowLayoutProbe, ImagesPageVisualProbe.
+
+3. UI centering + icon support (0.2.x work) is included in this build.
+
+RUN
+---
+- Requires the .NET 8 Desktop Runtime (x64 or ARM64).
+  Download: https://dotnet.microsoft.com/download/dotnet/8.0  ("Desktop Runtime")
+- Double-click AndroLink.Manager.exe
+
+BUILD FROM SOURCE
+-----------------
+- PowerShell:  .\scripts\build.ps1            (build + test)
+               .\scripts\build.ps1 -Publish   (+ out\publish)

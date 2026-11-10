@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>AndroLink.Backend.Qemu</RootNamespace>
+    <Description>AndroLink QEMU backend: reference plugin implementing IRuntimeBackend by launching an Android-x86 virtual machine and bridging it over ADB.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AndroLink.Core\AndroLink.Core.csproj" />
+    <ProjectReference Include="..\AndroLink.Adb\AndroLink.Adb.csproj" />
+  </ItemGroup>
+
+</Project>

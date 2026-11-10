@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>AndroLink.Adb</RootNamespace>
+    <Description>AndroLink ADB: pure-C# Android Debug Bridge client (smart-socket protocol, sync file transfer, APK install) plus the ADB runtime backend.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AndroLink.Core\AndroLink.Core.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,62 @@
+AndroLink 0.2.2 - build notes
+=============================
+
+FIXES
+-----
+1. Android images page scrolls properly now. Root cause: the UI framework's
+   StackPanel measured every child with the FULL page height (and double
+   counted its own padding), so the ScrollViewer under the page title +
+   toolbar extended past the bottom edge of the window - the rows below the
+   fold were unreachable and no scrollbar thumb could be seen. StackPanel now
+   gives later children the remaining main-axis space and constrains them by
+   the padded-free area; the ScrollViewer gets exactly the leftover height on
+   every page. Tests: ScrollFillTests.
+
+2. Mouse-wheel scrolling crashed silently. Window.DispatchPointerWheel cast
+   the base PointerEventArgs to WheelEventArgs, which throws on every wheel
+   tick; the WndProc guard swallowed the exception, so wheel scrolling never
+   worked anywhere. The wheel now builds a real WheelEventArgs. Test:
+   ScrollFillTests.Wheel_over_the_list_scrolls_the_page_scrollviewer.
+
+3. The scrollbar thumb was invisible: it was drawn before the children, so
+   full-width row backgrounds painted over it. The renderer now has a
+   post-children pass (UIElement.OnRenderOver) and the ScrollViewer draws its
+   thumb there.
+
+NEW
+---
+4. Small windows: every page (Devices, Apps, Files, Android images, Settings)
+   now keeps its toolbar reachable and scrolls the content area; the window
+   has a 560x380 minimum size. Regression-tested at the minimum size:
+   ScrollFillTests.Minimum_window_size_keeps_toolbar_buttons_inside_and_clickable.
+
+5. Choose the downloaded image ("Set default" on the Android images page):
+   - Installed image rows gain a "Set default" toggle; the chosen image is
+     highlighted with an accent border and a "Default image" pill.
+   - The choice is persisted in settings.json (DefaultImagePackage), shown in
+     the status bar, and preselected in the Create device dialog's
+     "Android version" list.
+   - The first downloaded image becomes the default automatically (change or
+     unset it any time); deleting the default image clears the choice.
+   - Tests: ConfigTests.AppSettings_round_trips_the_default_image_choice.
+
+6. The Create device dialog scrolls when the window is small instead of
+   cutting off its fields (form lives in a ScrollViewer capped to the window
+   height).
+
+Buttons inside pages (Create device, Start, Stop, Delete, Download, ...) were
+already fixed for 0.2.1; the probe suite (HitTestProbeTests) keeps guarding
+that fix - 56 tests total pass in this build.
+
+RUN
+---
+- Requires the .NET 8 Desktop Runtime (x64 or ARM64).
+  Download: https://dotnet.microsoft.com/download/dotnet/8.0  ("Desktop Runtime")
+- Double-click AndroLink.Manager.exe
+
+BUILD FROM SOURCE
+-----------------
+- PowerShell:  .\scripts\build.ps1            (build + test)
+               .\scripts\build.ps1 -Publish   (+ out\publish)
+               .\scripts\build.ps1 -Publish -Installer   (+ Inno Setup package)
+- Bash:        ./scripts/build.sh
