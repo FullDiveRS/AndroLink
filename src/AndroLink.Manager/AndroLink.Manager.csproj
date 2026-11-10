@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>AndroLink.Manager</RootNamespace>
+    <AssemblyName>AndroLink.Manager</AssemblyName>
+    <ApplicationIcon>assets\androlink.ico</ApplicationIcon>
+    <Description>AndroLink Manager: the desktop application for managing Android devices, installing APKs, browsing shared files and editing settings.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AndroLink.Core\AndroLink.Core.csproj" />
+    <ProjectReference Include="..\AndroLink.Adb\AndroLink.Adb.csproj" />
+    <ProjectReference Include="..\AndroLink.UI\AndroLink.UI.csproj" />
+    <ProjectReference Include="..\AndroLink.Win32\AndroLink.Win32.csproj" />
+    <ProjectReference Include="..\AndroLink.Backend.Simulated\AndroLink.Backend.Simulated.csproj" />
+    <ProjectReference Include="..\AndroLink.Backend.Qemu\AndroLink.Backend.Qemu.csproj" />
+  </ItemGroup>
+
+</Project>

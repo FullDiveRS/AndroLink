@@ -1,0 +1,19 @@
+<Project>
+
+  <PropertyGroup>
+    <LangVersion>12</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Version>0.2.2</Version>
+    <Authors>AndroLink Project</Authors>
+    <Product>AndroLink</Product>
+    <Copyright>Copyright (c) 2026 AndroLink Project</Copyright>
+    <!-- Allows building Windows-targeting projects (net8.0-windows) from non-Windows machines,
+         e.g. CI or a Linux dev box. Compile-only; running still requires Windows. -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+
+</Project>

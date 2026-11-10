@@ -1,0 +1,12 @@
+bin/
+obj/
+out/
+publish/
+artifacts/
+*.user
+*.suo
+.vs/
+.idea/
+*.DotSettings.user
+setup.exe
+AndroLinkSetup.exe

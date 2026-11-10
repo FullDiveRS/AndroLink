@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>AndroLink.Backend.Simulated</RootNamespace>
+    <Description>AndroLink simulated device backend: a fully working demo runtime that stores the emulated device's /sdcard in real Windows folders.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AndroLink.Core\AndroLink.Core.csproj" />
+  </ItemGroup>
+
+</Project>
