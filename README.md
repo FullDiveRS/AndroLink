@@ -1,3 +1,5 @@
+## This project was made by GLM-5.3-flash. you may study, use or fork it as long as it retains the MIT license
+
 # AndroLink
 
 **An Android Subsystem for Windows, written in C#.**
